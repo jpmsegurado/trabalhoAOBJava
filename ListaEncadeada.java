@@ -77,7 +77,7 @@ public class ListaEncadeada {
             builder.append("\n");
             builder.append("chave-->").append(aux.getChave());
             builder.append("\n");
-            builder.append("dado---> ").append(aux.getDado());
+            builder.append("dado--->").append(aux.getDado());
             builder.append("\n");
             
             aux = aux.getProximo();
@@ -88,5 +88,30 @@ public class ListaEncadeada {
         return builder.toString();
     }
     
+    
+    public void ordenaLista(){
+        ItemLista aux1 = this.primeiro;
+        while(aux1 != null){
+            ItemLista aux2 = this.primeiro;
+            while(aux2 != null){
+                if(aux2.getChave() > aux1.getChave()){
+                    trocaValores(aux1, aux2);
+                }
+                
+                aux2 = aux2.getProximo();
+            }
+            aux1 = aux1.getProximo();
+        }
+    }
+    
+    public void trocaValores(ItemLista item1, ItemLista item2){
+        ItemLista aux = new ItemLista(item1.getDado(), item1.getChave());
+        item1.setChave(item2.getChave());
+        item1.setDado(item2.getDado());
+        item2.setChave(aux.getChave());
+        item2.setDado(aux.getDado());
+        
+        
+    }
         
 }
